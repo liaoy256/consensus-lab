@@ -2038,7 +2038,13 @@ footer > a:last-child {
   color: #bcc3b9;
 }
 
-footer > a:last-child:hover {
+.footer-links {
+  display: flex;
+  gap: 22px;
+  color: #bcc3b9;
+}
+
+.footer-links a:hover {
   color: var(--lime);
 }
 

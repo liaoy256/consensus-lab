@@ -4,6 +4,10 @@
 
 这是一个**教学模拟**。页面里的 CB 没有价值、不能兑换，也不连接任何真实钱包或比特币网络。
 
+[打开在线课堂](https://liaoy256.github.io/consensus-lab/)
+
+![共识实验室二维码](assets/consensus-lab-qr.svg)
+
 ## 功能
 
 - 扫码创建或加入课堂房间，每台设备拥有独立会话身份
@@ -69,7 +73,7 @@ python -m http.server 4173 --bind 127.0.0.1
 
 ```powershell
 node --check app.js
-node scripts/e2e-room.cjs
+$env:BASE_URL='https://liaoy256.github.io/consensus-lab/'; node scripts/e2e-room.cjs
 ```
 
 联网测试需要本机启动本地服务器，并允许浏览器访问 MQTT WebSocket。

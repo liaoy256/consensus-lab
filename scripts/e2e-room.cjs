@@ -1,4 +1,5 @@
 const { chromium } = require('C:/Users/33758/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const baseUrl = process.env.BASE_URL || 'http://127.0.0.1:4173/';
 
 let browser;
 
@@ -29,7 +30,7 @@ let browser;
     });
   }
 
-  await host.goto('http://127.0.0.1:4173/', { waitUntil: 'networkidle' });
+  await host.goto(baseUrl, { waitUntil: 'networkidle' });
   await host.locator('#playerName').fill('老师');
   await host.locator('#createRoomButton').click();
   await host.locator('#gamePanel').waitFor({ state: 'visible' });
@@ -43,7 +44,9 @@ let browser;
     return;
   }
 
-  await guest.goto(`http://127.0.0.1:4173/?room=${room}`, { waitUntil: 'networkidle' });
+  const guestUrl = new URL(baseUrl);
+  guestUrl.searchParams.set('room', room);
+  await guest.goto(guestUrl.toString(), { waitUntil: 'networkidle' });
   await guest.locator('#playerName').fill('学生甲');
   await guest.locator('#joinRoomButton').click();
   await guest.locator('#gamePanel').waitFor({ state: 'visible', timeout: 25000 });
