@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d0c">
+  <meta name="description" content="共识实验室：一款可在手机和电脑共同参与的区块链记账教学游戏。体验交易签名、挖矿、分叉、双花与 51% 攻击。">
+  <title>共识实验室｜区块链记账课堂</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#game">跳到联合账本</a>
+  <div class="page-grid" aria-hidden="true"></div>
+
+  <header class="site-head">
+    <a class="brand" href="#top" aria-label="共识实验室首页">
+      <span class="brand-mark" aria-hidden="true">
+        <i></i><i></i><i></i>
+      </span>
+      <span>
+        <strong>共识实验室</strong>
+        <small>BLOCK LAB / 2026</small>
+      </span>
+    </a>
+    <nav aria-label="页面导航">
+      <a href="#game">联合账本</a>
+      <a href="#lesson">课堂流程</a>
+      <a href="#rules">规则对照</a>
+    </nav>
+    <span class="demo-badge"><i></i> 教学模拟 · 非真实货币</span>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow"><span>01</span> 没有中心机构，账本怎么记？</p>
+        <h1>每个人都是一座节点。<br><em>一起写下，无法随手改写的账本。</em></h1>
+        <p class="hero-lead">扫码加入同一间“共识教室”，完成转账、签名与挖矿。亲手制造一次分叉、双花和多数算力攻击，再看全网如何选择唯一账本。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#game">进入联合账本 <span>↘</span></a>
+          <a class="button button-quiet" href="#lesson">先看 12 分钟流程</a>
+        </div>
+        <ul class="hero-facts" aria-label="课程特点">
+          <li><b>0</b><span>安装步骤</span></li>
+          <li><b>30+</b><span>可同时加入</span></li>
+          <li><b>1</b><span>二维码开课</span></li>
+        </ul>
+      </div>
+
+      <div class="network-stage" aria-label="节点向共同账本同步区块的示意图">
+        <div class="stage-label"><span>LIVE CONSENSUS MAP</span><b>同一份账本，多台设备</b></div>
+        <svg class="network-map" viewBox="0 0 620 470" role="img" aria-labelledby="network-title network-desc">
+          <title id="network-title">点对点记账网络</title>
+          <desc id="network-desc">若干手机节点彼此广播交易，共同连接成一条区块账本。</desc>
+          <defs>
+            <linearGradient id="lineGlow" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#c8ff4d" stop-opacity=".12"/>
+              <stop offset=".55" stop-color="#c8ff4d" stop-opacity=".8"/>
+              <stop offset="1" stop-color="#55e3c1" stop-opacity=".18"/>
+            </linearGradient>
+          </defs>
+          <g class="net-lines">
+            <path d="M105 120 237 61 389 95 497 206 434 355 277 397 112 304Z"/>
+            <path d="M237 61 277 397M105 120 497 206 277 397 105 120M389 95 434 355 112 304 389 95"/>
+          </g>
+          <g class="pulse-path">
+            <circle r="5" fill="#c8ff4d">
+              <animateMotion dur="6s" repeatCount="indefinite" path="M105 120 237 61 389 95 497 206 434 355 277 397 112 304Z"/>
+            </circle>
+            <circle r="4" fill="#55e3c1">
+              <animateMotion dur="8s" begin="-3s" repeatCount="indefinite" path="M434 355 112 304 389 95 497 206 434 355"/>
+            </circle>
+          </g>
+          <g class="stage-node n1"><circle cx="105" cy="120" r="35"/><rect x="94" y="108" width="22" height="24" rx="3"/><path d="M120 104v13m0-13 5-4m-5 4-5-4"/></g>
+          <g class="stage-node n2"><circle cx="237" cy="61" r="35"/><rect x="226" y="49" width="22" height="24" rx="3"/><path d="M252 45v13m0-13 5-4m-5 4-5-4"/></g>
+          <g class="stage-node n3"><circle cx="389" cy="95" r="35"/><rect x="378" y="83" width="22" height="24" rx="3"/><path d="M404 79v13m0-13 5-4m-5 4-5-4"/></g>
+          <g class="stage-node n4"><circle cx="497" cy="206" r="35"/><rect x="486" y="194" width="22" height="24" rx="3"/><path d="M512 190v13m0-13 5-4m-5 4-5-4"/></g>
+          <g class="stage-node n5"><circle cx="434" cy="355" r="35"/><rect x="423" y="343" width="22" height="24" rx="3"/><path d="M449 339v13m0-13 5-4m-5 4-5-4"/></g>
+          <g class="stage-node n6"><circle cx="277" cy="397" r="35"/><rect x="266" y="385" width="22" height="24" rx="3"/><path d="M292 381v13m0-13 5-4m-5 4-5-4"/></g>
+          <g class="stage-node n7"><circle cx="112" cy="304" r="35"/><rect x="101" y="292" width="22" height="24" rx="3"/><path d="M127 288v13m0-13 5-4m-5 4-5-4"/></g>
+          <g class="center-chain">
+            <rect x="218" y="188" width="182" height="96" rx="18"/>
+            <text x="309" y="221" text-anchor="middle">共同账本</text>
+            <text x="309" y="248" text-anchor="middle" class="chain-code">#41 → #42 → #43</text>
+            <circle cx="244" cy="263" r="4"/><circle cx="259" cy="263" r="4"/><circle cx="274" cy="263" r="4"/>
+          </g>
+        </svg>
+        <div class="stage-caption">
+          <span><i></i> 交易正在广播</span>
+          <span>节点各自验算</span>
+          <span>多数算力决定主链</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="principle-strip" aria-label="游戏的核心问题">
+      <span>谁来记账？</span>
+      <b>矿工竞争计算</b>
+      <i></i>
+      <span>凭什么相信？</span>
+      <b>签名 + 哈希 + 最长有效链</b>
+      <i></i>
+      <span>出了事故怎么办？</span>
+      <b>验证、分叉、重组与取舍</b>
+    </section>
+
+    <section class="game-shell" id="game">
+      <div class="section-intro">
+        <p class="eyebrow"><span>02</span> 联合账本 / LIVE LEDGER</p>
+        <div>
+          <h2>现在，请把银行拿掉。</h2>
+          <p>你签名的每笔交易都会先进入待确认区。挖到区块后，它才被写进共同账本。</p>
+        </div>
+      </div>
+
+      <section class="entry-panel" id="entryPanel" aria-labelledby="entry-title">
+        <div class="entry-copy">
+          <span class="panel-index">JOIN / 加入</span>
+          <h3 id="entry-title">领取你的课堂节点</h3>
+          <p id="entryHint">创建一间课堂房间，电脑作为投影台；学生扫码后用键盘上显示的六位房间号加入。</p>
+          <div class="entry-features">
+            <span>浏览器内生成签名密钥</span>
+            <span>不连接真实钱包</span>
+            <span>房间结束后不保留资产</span>
+          </div>
+        </div>
+        <form class="entry-form" id="entryForm" autocomplete="off">
+          <label>
+            <span>你的昵称</span>
+            <input id="playerName" name="playerName" maxlength="12" placeholder="例如：小林" required>
+          </label>
+          <label id="roomJoinField" hidden>
+            <span>房间号</span>
+            <input id="roomCodeInput" name="roomCode" maxlength="8" inputmode="text" placeholder="例如：A7K2QF">
+          </label>
+          <div class="entry-actions" id="createActions">
+            <button class="button button-primary" type="submit" id="createRoomButton">创建课堂房间 <span>→</span></button>
+            <button class="button button-quiet" type="button" id="offlineDemoButton">离线单人演示</button>
+          </div>
+          <div class="entry-actions" id="joinActions" hidden>
+            <button class="button button-primary" type="submit" id="joinRoomButton">加入房间 <span>→</span></button>
+            <button class="button button-quiet" type="button" id="cancelJoinButton">返回</button>
+          </div>
+          <p class="form-note" id="entryMessage" role="status">密钥只保存在当前标签页。这里没有真实私钥、充值或提现。</p>
+        </form>
+      </section>
+
+      <section class="game-panel" id="gamePanel" hidden aria-live="polite">
+        <div class="room-bar">
+          <div class="room-code-wrap">
+            <span>课堂房间</span>
+            <button id="roomCodeButton" type="button" title="复制邀请链接"><strong id="roomCode">------</strong><small>复制链接</small></button>
+          </div>
+          <div class="room-pulse" id="roomStatus"><i></i><span>正在连接课堂中继</span></div>
+          <div class="room-tools">
+            <span id="nodeCount">1 个节点</span>
+            <button class="icon-button" id="qrButton" type="button" aria-label="显示加入二维码" title="显示加入二维码">QR</button>
+            <button class="icon-button" id="presentButton" type="button" aria-label="进入投影模式" title="进入投影模式">⛶</button>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <aside class="profile-card">
+            <div class="profile-head">
+              <div class="avatar" id="playerAvatar">林</div>
+              <div><span id="playerRole">发起节点</span><strong id="playerDisplayName">林同学</strong></div>
+            </div>
+            <div class="balance-label">可用教学币</div>
+            <div class="balance"><strong id="playerBalance">100</strong><span>CB</span></div>
+            <div class="address-box">
+              <span>你的教学地址</span>
+              <code id="playerAddress">bc_·······</code>
+            </div>
+            <div class="profile-metrics">
+              <span><b id="playerConfirmed">0</b> 已确认</span>
+              <span><b id="playerPending">0</b> 待确认</span>
+            </div>
+            <button class="text-button" id="showIdentityButton" type="button">怎样证明这笔转账是我发的？</button>
+          </aside>
+
+          <div class="metric-card">
+            <span>主链高度</span>
+            <strong id="chainHeight">0</strong>
+            <small id="chainHeightNote">创世块</small>
+          </div>
+          <div class="metric-card">
+            <span>待确认交易</span>
+            <strong id="mempoolCount">0</strong>
+            <small>等待矿工打包</small>
+          </div>
+          <div class="metric-card">
+            <span>区块奖励</span>
+            <strong id="blockReward">8</strong>
+            <small>教学币 / 块</small>
+          </div>
+          <div class="metric-card accent">
+            <span>全网节点</span>
+            <strong id="metricNodes">1</strong>
+            <small>每台设备一个身份</small>
+          </div>
+        </div>
+
+        <div class="lab-layout">
+          <div class="action-stack">
+            <section class="panel transaction-panel">
+              <div class="panel-head">
+                <div><span class="panel-index">TRANSFER / 01</span><h3>签名并广播一笔交易</h3></div>
+                <span class="panel-icon" aria-hidden="true">↗</span>
+              </div>
+              <form id="transferForm">
+                <label>
+                  <span>转给谁</span>
+                  <select id="recipientSelect" required></select>
+                </label>
+                <div class="amount-row">
+                  <label>
+                    <span>金额</span>
+                    <div class="amount-input"><input id="transferAmount" type="number" min="1" max="50" value="10" step="1" required><b>CB</b></div>
+                  </label>
+                  <label>
+                    <span>矿工费</span>
+                    <div class="amount-input readonly"><input value="1" readonly tabindex="-1"><b>CB</b></div>
+                  </label>
+                </div>
+                <button type="submit" class="button button-primary wide" id="sendTransferButton">签名并广播 <span>→</span></button>
+                <p class="form-note" id="transferNote">数字签名证明“是你同意”，余额检查防止你花超过自己拥有的币。</p>
+              </form>
+            </section>
+
+            <section class="panel mining-panel">
+              <div class="panel-head">
+                <div><span class="panel-index">PROOF OF WORK / 02</span><h3>寻找一次漂亮的计算</h3></div>
+                <span class="panel-icon hash-icon" aria-hidden="true">#</span>
+              </div>
+              <p class="panel-copy">不断改变 nonce，让区块哈希开头出现 <b id="difficultyLabel">000</b>。找到后，你就可以打包交易并领取奖励。</p>
+              <div class="hash-machine" id="hashMachine">
+                <div><span>前一次哈希</span><code id="previousHash">0000…0000</code></div>
+                <div class="hash-arrow">SHA-256 →</div>
+                <div><span>候选哈希</span><code id="candidateHash">等待开始计算</code></div>
+              </div>
+              <div class="mining-stats">
+                <span>尝试次数 <b id="nonceCounter">0</b></span>
+                <span>目标 <b id="targetLabel">000 …</b></span>
+              </div>
+              <button class="button button-dark wide" type="button" id="mineButton"><span class="mine-dot"></span>开始挖矿 <span>↗</span></button>
+            </section>
+
+            <section class="panel incident-panel">
+              <div class="panel-head">
+                <div><span class="panel-index">INCIDENT / 03</span><h3>制造一点“事故”</h3></div>
+                </div>
+              <p class="panel-copy">规则不是写在墙上的，而是在冲突发生时被看见。</p>
+              <div class="incident-grid">
+                <button type="button" class="incident-button" data-incident="double">
+                  <span>双花</span><strong>同一笔钱花两次</strong><small>广播两笔互相冲突的交易</small>
+                </button>
+                <button type="button" class="incident-button host-only" data-incident="fork">
+                  <span>分叉</span><strong>两个人同时出块</strong><small>让两条链暂时都出现</small>
+                </button>
+                <button type="button" class="incident-button host-only" data-incident="attack">
+                  <span>51%</span><strong>多数算力改写</strong><small>先标记联盟，再演示重组</small>
+                </button>
+              </div>
+              <p class="incident-result" id="incidentResult" role="status">事故还没有发生。先完成几笔转账，再试试看。</p>
+            </section>
+          </div>
+
+          <div class="ledger-stack">
+            <section class="panel chain-panel">
+              <div class="panel-head">
+                <div><span class="panel-index">CANONICAL CHAIN / 主链</span><h3>共同账本正在变长</h3></div>
+                <div class="chain-legend"><span><i></i>主链</span><span><i></i>分叉</span></div>
+              </div>
+              <div class="chain-ribbon" id="chainRibbon"></div>
+              <div class="best-block">
+                <div class="best-block-head"><span>当前最长有效链的末端</span><code id="bestBlockHash">0000…</code></div>
+                <div class="best-block-grid">
+                  <span><b id="bestBlockHeight">0</b>高度</span>
+                  <span><b id="bestBlockMiner">创世</b>出块节点</span>
+                  <span><b id="bestBlockTxCount">0</b>交易数</span>
+                  <span><b id="bestBlockNonce">0</b>nonce</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel mempool-panel">
+              <div class="panel-head">
+                <div><span class="panel-index">MEMPOOL / 待确认区</span><h3>还没被写进区块的交易</h3></div>
+                <span class="count-chip" id="poolChip">0 笔</span>
+              </div>
+              <div class="mempool-list" id="mempoolList">
+                <div class="empty-state">还没有待确认交易。先发起一笔转账吧。</div>
+              </div>
+            </section>
+
+            <section class="panel league-panel">
+              <div class="panel-head">
+                <div><span class="panel-index">LEDGER / 财富排行</span><h3>账本里的每一个地址</h3></div>
+                <button class="text-button" id="openSummaryButton" type="button">课堂复盘 ↗</button>
+              </div>
+              <div class="ranking-list" id="rankingList"></div>
+            </section>
+          </div>
+        </div>
+
+        <section class="panel full-ledger-panel">
+          <div class="panel-head">
+            <div><span class="panel-index">TRANSACTION BOOK / 全量流水</span><h3>每笔钱都留下了足迹</h3></div>
+            <div class="ledger-actions">
+              <button class="text-button" type="button" id="downloadLedgerButton">导出 CSV ↓</button>
+              <button class="text-button" type="button" id="copyLedgerButton">复制账本</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>时间</th><th>付款地址</th><th>收款地址</th><th>金额</th><th>状态</th><th>区块</th></tr></thead>
+              <tbody id="ledgerTable"></tbody>
+            </table>
+            <div class="empty-state" id="ledgerEmpty">账本还没有交易。发一笔转账，让历史开始。</div>
+          </div>
+        </section>
+
+        <section class="host-tools" id="hostTools" hidden>
+          <div>
+            <span class="panel-index">HOST TOOLKIT / 教师台</span>
+            <strong>把全班变成一座真实运转的账本网络</strong>
+          </div>
+          <button class="button button-quiet" type="button" id="addBotsButton">加入 5 个示例节点</button>
+          <button class="button button-quiet" type="button" id="markColludersButton">标记逾半攻击联盟</button>
+          <button class="button button-quiet" type="button" id="resetRoomButton">重置课堂账本</button>
+        </section>
+      </section>
+    </section>
+
+    <section class="lesson-section" id="lesson">
+      <div class="section-intro">
+        <p class="eyebrow"><span>03</span> 课堂导演台 / 12 MIN</p>
+        <div>
+          <h2>不是展示一个程序，<br>而是让全班经历一次分歧。</h2>
+          <p>屏幕上的每一步都对应一个问题。按这个顺序，十分钟左右就能把抽象共识变成可观察的事实。</p>
+        </div>
+      </div>
+      <ol class="timeline">
+        <li>
+          <span class="time">00:00</span><i>01</i>
+          <div><h3>扫码，成为节点</h3><p>每人用昵称加入，得到教学地址和一笔创世教学币。观察：没有银行网站，身份仍可由一对密钥定义。</p></div>
+          <b>对应：公私钥与地址</b>
+        </li>
+        <li>
+          <span class="time">02:30</span><i>02</i>
+          <div><h3>发起第一笔跨节点转账</h3><p>付款者签名，其他屏幕看到交易进入待确认区。指出：广播不等于成功，未入块之前仍可能被撤回。</p></div>
+          <b>对应：数字签名、mempool</b>
+        </li>
+        <li>
+          <span class="time">04:30</span><i>03</i>
+          <div><h3>抢答：谁有资格记下一块？</h3><p>让几位学生同时点击挖矿。网页真的搜索 SHA-256 nonce；先找到合法区块的人打包交易并获得奖励。</p></div>
+          <b>对应：工作量证明、出块奖励</b>
+        </li>
+        <li>
+          <span class="time">07:00</span><i>04</i>
+          <div><h3>制造双花和同时出块</h3><p>两笔交易都花同一笔余额，一台手机和另一台手机又几乎同时挖到区块。看系统保留两叉、拒绝冲突并选择一条主链。</p></div>
+          <b>对应：冲突交易、最长有效链</b>
+        </li>
+        <li>
+          <span class="time">09:30</span><i>05</i>
+          <div><h3>全班决定：要不要交出多数算力？</h3><p>标记超过一半的节点为攻击联盟，演示一次近期交易被重排。强调：多数算力能改写顺序与否定交易，但不能凭空伪造别人的签名。</p></div>
+          <b>对应：51% 攻击的真实边界</b>
+        </li>
+        <li>
+          <span class="time">11:00</span><i>06</i>
+          <div><h3>关掉投影，读完整账本</h3><p>打开课堂复盘，按财富排行和交易流水复述每个人的钱从哪里来、哪笔被拒绝、哪条分支成了主链，以及系统为什么最终能收敛。</p></div>
+          <b>对应：可验证账本与共识收敛</b>
+        </li>
+      </ol>
+      <div class="lesson-tip">
+        <span>课堂提示</span>
+        <p>先让学生预测“第二笔双花会不会成功”，再点击演示。先猜、后看，争论会比对答案更有价值。</p>
+      </div>
+    </section>
+
+    <section class="rules-section" id="rules">
+      <div class="section-intro">
+        <p class="eyebrow"><span>04</span> 规则对照 / WHAT IS REAL</p>
+        <div>
+          <h2>游戏很像比特币。<br><em>但这里每一处简化都要讲清楚。</em></h2>
+          <p>这款游戏为了 12 分钟课堂上手，省略了比特币的大量工程细节。以下不是装饰说明，而是游戏规则的“诚实边界”。</p>
+        </div>
+      </div>
+
+      <div class="rule-summary">
+        <article><span>真实</span><h3>竞争记账</h3><p>谁先找到满足目标的有效工作量证明，谁就有权提出下一块，获得新发行币与交易费。</p></article>
+        <article><span>真实</span><h3>最长有效链</h3><p>节点不会数“消息最多”的链，而会按累计工作量选择主链；冲突交易最终只能有一笔进入主链。</p></article>
+        <article><span>真实</span><h3>签名与公开验证</h3><p>转账必须由持有私钥的人签名。算力再多也不能替别人签一笔有效转账。</p></article>
+        <article><span>简化</span><h3>课堂主机中继</h3><p>为了让几十台手机稳定进入同一房间，本游戏由主持人页面做消息中转；比特币没有这样的课堂主机。</p></article>
+      </div>
+
+      <div class="comparison-table" role="table" aria-label="游戏规则与真实比特币的对照">
+        <div class="comparison-head" role="row">
+          <span role="columnheader">环节</span>
+          <span role="columnheader">本游戏怎么做</span>
+          <span role="columnheader">真实比特币怎么做</span>
+          <span role="columnheader">课堂要说的差别</span>
+        </div>
+        <div role="row">
+          <strong role="cell">身份与地址</strong>
+          <span role="cell">浏览器生成 P-256 密钥；地址是公钥摘要的短显示。</span>
+          <span role="cell">通常用 secp256k1 曲线；地址由公钥哈希等规则生成，Taproot 地址还包含脚本承诺。</span>
+          <span role="cell">二者都做“私钥签名、公钥验证”，但这里的曲线与地址规则不是比特币。</span>
+        </div>
+        <div role="row">
+          <strong role="cell">余额模型</strong>
+          <span role="cell">每个地址维护一个简单余额。</span>
+          <span role="cell">比特币采用 UTXO：交易消耗旧的未花费输出，再创建新的输出。</span>
+          <span role="cell">课堂展示双花更容易；真实钱包找零、手续费和并发选择更复杂。</span>
+        </div>
+        <div role="row">
+          <strong role="cell">工作量证明</strong>
+          <span role="cell">对简化区块内容做一次 SHA-256，要求开头 3 个 0。</span>
+          <span role="cell">对区块头做两次 SHA-256，不断调整 nonce/coinbase，使结果小于随全网算力变化的 target。</span>
+          <span role="cell">本游戏的“难度”固定，搜索空间也小；它展示机制，不代表现实挖矿成本。</span>
+        </div>
+        <div role="row">
+          <strong role="cell">难度调整</strong>
+          <span role="cell">固定 3 个十六进制 0。</span>
+          <span role="cell">每 2,016 个区块检查一次，根据找到这些块所用时间调整 target，目标是平均约 10 分钟一块。</span>
+          <span role="cell">真实网络很难瞬间加入几十个节点就把难度同步改变；周期与算法也不同。</span>
+        </div>
+        <div role="row">
+          <strong role="cell">奖励与上限</strong>
+          <span role="cell">每块奖励 8 CB；每个课堂身份另有 100 CB 创世教学币。</span>
+          <span role="cell">区块奖励约每 210,000 块减半；2024 年后为 3.125 BTC，长期逼近但不超过 2,100 万 BTC。</span>
+          <span role="cell">课堂币没有价格、不能兑换。真实比特币供应由共识规则长期约束，不由老师后台发放。</span>
+        </div>
+        <div role="row">
+          <strong role="cell">分叉选择</strong>
+          <span role="cell">同高度时按哈希规则选一条；保留另一叉供课堂观察。</span>
+          <span role="cell">节点选择累计工作量最大且有效的主链；较短分支上的交易可回到 mempool，也可能最终失效。</span>
+          <span role="cell">课堂使用确定规则让演示稳定，真实规则是累计工作量，不是“哈希字典序”。</span>
+        </div>
+        <div role="row">
+          <strong role="cell">同步方式</strong>
+          <span role="cell">主持人页面保存房间状态，经公共 MQTT 中继推送完整快照。</span>
+          <span role="cell">节点通过对等网络广播区块和交易；每个全节点自己验证规则，没有唯一服务器。</span>
+          <span role="cell">课堂主机更像“稳定传输层”，不代表真实 Bitcoin 有一个中央账本。</span>
+        </div>
+        <div role="row">
+          <strong role="cell">隐私</strong>
+          <span role="cell">昵称与会话身份关联，仅用于课堂。</span>
+          <span role="cell">地址不是实名，但所有交易公开可见；通过地址复用、交易图、交易所 KYC 等可能关联到人。</span>
+          <span role="cell">“化名”不等于绝对匿名，“链上公开”也不等于人人都能识别现实身份。</span>
+        </div>
+      </div>
+
+      <div class="attack-explainer">
+        <div>
+          <p class="eyebrow"><span>!</span> 51% 攻击的边界</p>
+          <h3>多数算力能改写自己的近期历史，<br><em>却不能从别人钱包里偷币。</em></h3>
+        </div>
+        <ul>
+          <li><b>能做</b><span>压制交易确认、把别人近期区块挤掉、对自己已经发出的币做“先付款、后重组”的双花。<small>这是重组与审查能力，不是万能管理员权限。</small></span></li>
+          <li><b>不能做</b><span>伪造没有私钥的签名、凭空拿走别人地址里的币、任意改掉所有历史。</span></li>
+          <li><b>现实限制</b><span>攻击通常还要在秘密分支上持续投入算力，机会成本很高；交易确认数越多，重组越贵、越容易被发现。</span></li>
+        </ul>
+      </div>
+
+      <div class="sources-note">
+        <div>
+          <span>进一步核对</span>
+          <strong>优先读规则，不只读价格新闻。</strong>
+        </div>
+        <p>参考资料：Bitcoin Developer Guide（区块链、交易、PoW 与难度调整）、Bitcoin Core 文档、中本聪 2008 年白皮书。页面中的“3.125 BTC”对应 2024 年完成的第四次减半；“每 2,016 块调整一次”是 Bitcoin 主网共识规则。课堂演示代码不处理真实资产。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="#top">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span><strong>共识实验室</strong><small>把规则变成经历</small></span>
+    </a>
+    <p>教学实验 · 无真实资产 · 无投资建议</p>
+    <a href="#top">回到顶部 ↑</a>
+  </footer>
+
+  <dialog id="qrDialog" class="modal qr-modal">
+    <button class="modal-close" type="button" data-close-dialog="qrDialog" aria-label="关闭">×</button>
+    <span class="panel-index">SCAN TO JOIN / 扫码加入</span>
+    <h2>让下一座节点上线</h2>
+    <p>手机和电脑需能联网。扫描后输入昵称，就会加入当前课堂账本。</p>
+    <div class="qr-frame"><div id="qrCanvas"></div></div>
+    <strong class="qr-room" id="qrRoomCode">ROOM ------</strong>
+    <div class="qr-link"><code id="qrLinkText"></code><button type="button" id="copyQrLinkButton">复制</button></div>
+  </dialog>
+
+  <dialog id="summaryDialog" class="modal summary-modal">
+    <button class="modal-close" type="button" data-close-dialog="summaryDialog" aria-label="关闭">×</button>
+    <span class="panel-index">CLASS REVIEW / 课堂复盘</span>
+    <h2>这局账本，讲清了什么？</h2>
+    <div class="summary-numbers" id="summaryNumbers"></div>
+    <div class="summary-grid">
+      <div><h3>最终财富排行</h3><ol id="summaryRanking"></ol></div>
+      <div><h3>账本结论</h3><ul id="summaryConclusions"></ul></div>
+    </div>
+    <div class="summary-actions">
+      <button class="button button-primary" type="button" id="summaryDownloadButton">导出完整账本</button>
+      <button class="button button-quiet" type="button" data-close-dialog="summaryDialog">继续演示</button>
+    </div>
+  </dialog>
+
+  <dialog id="identityDialog" class="modal identity-modal">
+    <button class="modal-close" type="button" data-close-dialog="identityDialog" aria-label="关闭">×</button>
+    <span class="panel-index">SIGN, DON'T SHARE / 签名，而不交出私钥</span>
+    <h2>为什么别人不能冒用你转账？</h2>
+    <div class="signature-flow">
+      <div><b>私钥</b><span>只留在你的当前标签页会话</span></div>
+      <i>→</i>
+      <div><b>数字签名</b><span>随交易一起广播</span></div>
+      <i>→</i>
+      <div><b>公钥验证</b><span>所有节点都能检查</span></div>
+    </div>
+    <p>交易内容被改动后，旧签名就对不上。别人即使看到你的地址和全部交易，也无法仅凭这些伪造下一笔有效转账；这正是“公钥可公开、私钥必须保密”的核心区别。</p>
+    <p class="form-note">本游戏使用浏览器 Web Crypto 的 ECDSA P-256。真实比特币通常使用 secp256k1 上的 ECDSA 或 Schnorr 签名，两者用途相近，但参数与格式不同。</p>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <script src="vendor/qrcode.js"></script>
+  <script src="vendor/qrcode_UTF8.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+# Reference material supplied by the instructor
+第一次汇报可选题目2026.pdf
+bitcoin simulator.exe
+猫咪养成游戏/
+
+# Local QA and dependency files
+_pdf_preview/
+_qa-*.png
+_bitcoin_simulator*.png
+node_modules/
+package-lock.json
+
+# Build and CSV exports
+共识实验室-*.csv
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
