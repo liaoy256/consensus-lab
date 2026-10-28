@@ -52,6 +52,8 @@ function cacheUi() {
     'markColludersButton', 'resetRoomButton', 'qrDialog', 'qrCanvas', 'qrRoomCode',
     'qrLinkText', 'copyQrLinkButton', 'summaryDialog', 'summaryNumbers', 'summaryRanking',
     'summaryConclusions', 'summaryDownloadButton', 'identityDialog', 'toast', 'confetti',
+    'quickHelpButton', 'helpButton', 'helpDialog', 'coachPanel', 'coachStepNumber',
+    'coachTitle', 'coachText', 'coachQrButton',
   ];
   ids.forEach((id) => {
     ui[id] = document.getElementById(id);
@@ -60,6 +62,9 @@ function cacheUi() {
 
 function bindEvents() {
   ui.entryForm.addEventListener('submit', handleEntrySubmit);
+  ui.quickHelpButton.addEventListener('click', () => openDialog(ui.helpDialog));
+  ui.helpButton.addEventListener('click', () => openDialog(ui.helpDialog));
+  ui.coachQrButton.addEventListener('click', handleCoachAction);
   ui.offlineDemoButton.addEventListener('click', () => createRoom(true));
   ui.cancelJoinButton.addEventListener('click', () => {
     history.replaceState(null, '', location.pathname);
@@ -195,6 +200,11 @@ async function createRoom(offline, suppliedName = '') {
       render();
     } else {
       await connectSync(true);
+      if (app.sync?.ready) {
+        setTimeout(() => {
+          if (app.role === 'host' && !ui.gamePanel.hidden) openQrDialog();
+        }, 350);
+      }
     }
     setEntryBusy(false);
     persistSession();
@@ -1234,6 +1244,7 @@ function render() {
   renderRanking(derived, player);
   renderLedgerTable(derived);
   renderIncidentResult();
+  renderCoach(derived, player);
 
   ui.poolChip.textContent = `${derived.pending.length} 笔`;
   ui.bestBlockHash.textContent = shorten(best.hash, 20, 14);
@@ -1262,6 +1273,69 @@ function render() {
   if (activeContract && !ui.incidentResult.dataset.locked) {
     ui.incidentResult.textContent = activeContract;
     ui.incidentResult.classList.toggle('alert', ['attack', 'double-spend'].includes(app.state.narrative?.kind));
+  }
+}
+
+function renderCoach(derived, player) {
+  if (!ui.coachPanel || !app.state) return;
+  const isHost = app.role === 'host';
+  const hasOthers = app.state.players.some((item) => item.id !== player?.id);
+  const hasAnyTx = app.state.txs.length > 0;
+  const hasPending = derived.pending.length > 0;
+  const hasConfirmed = derived.included.length > 0;
+  let step = 2;
+  let title = '先发起一笔转账';
+  let text = '选择另一位同学，转账 5 CB。交易先进入待确认区，还不算完成。';
+  let action = 'transfer';
+  let actionLabel = '去转账';
+
+  if (isHost && !hasOthers) {
+    step = 1;
+    title = '先让同学扫码加入';
+    text = '点击右侧“显示二维码”，同学扫码后会进入这个房间。只想单人演示时，也可以在教师台加入 5 个示例节点。';
+    action = 'qr';
+    actionLabel = '显示二维码';
+  } else if (!hasAnyTx) {
+    step = 2;
+  } else if (hasPending) {
+    step = 3;
+    title = '现在让矿工打包';
+    text = `待确认区里有 ${derived.pending.length} 笔交易。点击“开始挖矿”，先找到以三个 0 开头的哈希者获得记账权。`;
+    action = 'mine';
+    actionLabel = '去挖矿';
+  } else if (hasConfirmed) {
+    step = 4;
+    title = '第一块已经写入账本';
+    text = '继续转账并挖矿，或点击“课堂复盘”查看财富排行、双花、分叉和完整流水。';
+    action = 'summary';
+    actionLabel = '课堂复盘';
+  }
+
+  ui.coachStepNumber.textContent = String(step);
+  ui.coachTitle.textContent = title;
+  ui.coachText.textContent = text;
+  ui.coachQrButton.textContent = actionLabel;
+  ui.coachQrButton.dataset.action = action;
+  ui.coachPanel.classList.toggle('guest-coach', !isHost);
+  ui.coachPanel.querySelectorAll('[data-step]').forEach((item) => {
+    const itemStep = Number(item.dataset.step);
+    item.classList.toggle('active', itemStep === step);
+    item.classList.toggle('done', itemStep < step);
+  });
+}
+
+function handleCoachAction() {
+  const action = ui.coachQrButton.dataset.action;
+  if (action === 'qr') {
+    openQrDialog();
+  } else if (action === 'transfer') {
+    document.querySelector('.transaction-panel')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    ui.recipientSelect.focus({ preventScroll: true });
+  } else if (action === 'mine') {
+    document.querySelector('.mining-panel')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => ui.mineButton.focus({ preventScroll: true }), 350);
+  } else if (action === 'summary') {
+    openSummary();
   }
 }
 

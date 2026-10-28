@@ -43,6 +43,9 @@ let browser;
     process.exitCode = 1;
     return;
   }
+  await host.waitForFunction(() => document.querySelector('#qrDialog')?.open === true, null, { timeout: 8000 });
+  const qrVisible = await host.locator('#qrCanvas svg').isVisible();
+  await host.locator('[data-close-dialog="qrDialog"]').first().click();
 
   const guestUrl = new URL(baseUrl);
   guestUrl.searchParams.set('room', room);
@@ -83,6 +86,7 @@ let browser;
 
   const result = {
     room,
+    qrVisible,
     hostNodes: await host.locator('#nodeCount').innerText(),
     guestNodes: await guest.locator('#nodeCount').innerText(),
     hostHeight: await host.locator('#chainHeight').innerText(),

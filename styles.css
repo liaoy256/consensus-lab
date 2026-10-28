@@ -2820,3 +2820,869 @@ body.presenting .dashboard-grid {
   }
 }
 
+/* Readability pass: classroom projection and phone legibility */
+.plain-howto {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 9px;
+  margin-top: 24px;
+}
+
+.plain-howto strong {
+  grid-column: 1 / -1;
+  color: #354235;
+  font-size: 14px;
+}
+
+.plain-howto span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 11px;
+  border: 1px solid #d1d7cc;
+  border-radius: 9px;
+  background: #eef3e6;
+  color: #465247;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.plain-howto b {
+  display: grid;
+  flex: 0 0 23px;
+  width: 23px;
+  height: 23px;
+  place-items: center;
+  border-radius: 50%;
+  background: #1b241b;
+  color: var(--lime);
+  font-family: "Consolas", monospace;
+  font-size: 12px;
+}
+
+.help-button {
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid #48534a;
+  border-radius: 8px;
+  background: var(--lime);
+  color: #11150f;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.coach-panel {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 20px 22px;
+  border: 1px solid #9bb055;
+  border-radius: 16px;
+  background:
+    linear-gradient(90deg, rgba(200, 255, 77, .3), rgba(200, 255, 77, .1)),
+    #f8faef;
+}
+
+.coach-step {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+}
+
+.coach-step > span {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--lime);
+  font-family: "Consolas", monospace;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.coach-step small {
+  color: #67755f;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.coach-copy strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #1c271d;
+  font-family: "STZhongsong", "Songti SC", serif;
+  font-size: 24px;
+}
+
+.coach-copy p {
+  max-width: 720px;
+  margin: 0;
+  color: #566354;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.coach-progress {
+  display: flex;
+  gap: 6px;
+}
+
+.coach-progress span {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  min-width: 48px;
+  color: #86907e;
+  font-size: 10px;
+}
+
+.coach-progress b {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  place-items: center;
+  border: 1px solid #c8cfba;
+  border-radius: 50%;
+  background: #f6f8f1;
+  color: #7c8778;
+  font-family: "Consolas", monospace;
+  font-size: 11px;
+}
+
+.coach-progress span.active {
+  color: #293826;
+  font-weight: 800;
+}
+
+.coach-progress span.active b {
+  border-color: #26351f;
+  background: #26351f;
+  color: var(--lime);
+}
+
+.coach-progress span.done b {
+  border-color: #9caf69;
+  background: #e2eec9;
+  color: #50672a;
+}
+
+.coach-qr-button {
+  min-width: 126px;
+  min-height: 45px;
+  font-size: 13px;
+}
+
+.coach-panel.guest-coach .coach-qr-button {
+  background: #34412f;
+}
+
+.help-modal {
+  width: min(760px, calc(100% - 28px));
+}
+
+.help-lead {
+  font-size: 15px !important;
+}
+
+.help-steps {
+  display: grid;
+  gap: 10px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: help-step;
+}
+
+.help-steps li {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #d2d8cb;
+  border-radius: 11px;
+  background: #fff;
+  counter-increment: help-step;
+}
+
+.help-steps li::before {
+  display: grid;
+  grid-row: span 2;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--lime);
+  content: counter(help-step);
+  font-family: "Consolas", monospace;
+  font-size: 14px;
+}
+
+.help-steps b {
+  color: #263127;
+  font-size: 15px;
+}
+
+.help-steps span {
+  color: #657166;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.help-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid #d5dacf;
+}
+
+.help-bottom > div {
+  display: grid;
+  gap: 4px;
+}
+
+.help-bottom b {
+  font-size: 14px;
+}
+
+.help-bottom span {
+  color: #737f74;
+  font-size: 12px;
+}
+
+.help-bottom .button {
+  min-width: 130px;
+}
+
+/* Larger type throughout the game and lesson material */
+.button {
+  font-size: 14px;
+}
+
+.site-head nav {
+  font-size: 15px;
+}
+
+.demo-badge,
+.principle-strip {
+  font-size: 13px;
+}
+
+.stage-label,
+.stage-caption {
+  font-size: 12px;
+}
+
+.hero-facts span {
+  font-size: 13px;
+}
+
+.section-intro > div > p {
+  font-size: 16px;
+}
+
+.panel-index {
+  font-size: 11px;
+}
+
+.entry-copy > p,
+.panel-copy {
+  font-size: 14px;
+}
+
+.entry-features span {
+  font-size: 12px;
+}
+
+.entry-form label,
+.transaction-panel label {
+  font-size: 14px;
+}
+
+.entry-form input,
+.entry-form select,
+.transaction-panel input,
+.transaction-panel select {
+  font-size: 16px;
+}
+
+.entry-actions .button {
+  font-size: 13px;
+}
+
+.form-note {
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+.room-code-wrap > span,
+.room-pulse,
+.room-tools {
+  font-size: 12px;
+}
+
+.room-code-wrap strong {
+  font-size: 20px;
+}
+
+.room-code-wrap small,
+.icon-button {
+  font-size: 11px;
+}
+
+.profile-head span,
+.balance-label,
+.profile-metrics {
+  font-size: 11px;
+}
+
+.profile-head strong {
+  font-size: 15px;
+}
+
+.address-box span {
+  font-size: 10px;
+}
+
+.address-box code {
+  font-size: 12px;
+}
+
+.balance span {
+  font-size: 12px;
+}
+
+.metric-card > span {
+  font-size: 12px;
+}
+
+.metric-card > small {
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.hash-machine span,
+.hash-arrow {
+  font-size: 10px;
+}
+
+.hash-machine code {
+  font-size: 12px;
+}
+
+.mining-stats {
+  font-size: 11px;
+}
+
+.incident-button span {
+  font-size: 11px;
+}
+
+.incident-button strong {
+  font-size: 14px;
+}
+
+.incident-button small {
+  font-size: 11px;
+}
+
+.incident-result {
+  font-size: 12px;
+}
+
+.chain-legend {
+  font-size: 11px;
+}
+
+.chain-chip span,
+.chain-chip code {
+  font-size: 10px;
+}
+
+.chain-chip strong {
+  font-size: 16px;
+}
+
+.best-block-head {
+  font-size: 11px;
+}
+
+.best-block-head code {
+  font-size: 11px;
+}
+
+.best-block-grid span {
+  font-size: 10px;
+}
+
+.best-block-grid b {
+  font-size: 16px;
+}
+
+.count-chip {
+  font-size: 11px;
+}
+
+.pool-item strong {
+  font-size: 13px;
+}
+
+.pool-item small {
+  font-size: 10px;
+}
+
+.pool-item > span:last-child {
+  font-size: 13px;
+}
+
+.empty-state {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.text-button {
+  font-size: 12px;
+}
+
+.rank-row > b {
+  font-size: 11px;
+}
+
+.rank-row strong {
+  font-size: 13px;
+}
+
+.rank-row small {
+  font-size: 10px;
+}
+
+.rank-row > em {
+  font-size: 9px;
+}
+
+.rank-row > span {
+  font-size: 13px;
+}
+
+table,
+th,
+td {
+  font-size: 12px;
+}
+
+td:nth-child(5) span {
+  font-size: 11px;
+}
+
+.host-tools strong {
+  font-size: 14px;
+}
+
+.host-tools .button {
+  font-size: 11px;
+}
+
+.timeline .time {
+  font-size: 11px;
+}
+
+.timeline p {
+  font-size: 14px;
+}
+
+.timeline li > b {
+  font-size: 10px;
+}
+
+.lesson-tip span,
+.lesson-tip p {
+  font-size: 13px;
+}
+
+.rule-summary span {
+  font-size: 11px;
+}
+
+.rule-summary p,
+.comparison-table > div[role="row"] > span {
+  font-size: 13px;
+}
+
+.comparison-head span {
+  font-size: 12px;
+}
+
+.comparison-table > div[role="row"] > strong {
+  font-size: 14px;
+}
+
+.attack-explainer li b {
+  font-size: 12px;
+}
+
+.attack-explainer li span {
+  font-size: 13px;
+}
+
+.attack-explainer li small {
+  font-size: 11px;
+}
+
+.sources-note span {
+  font-size: 11px;
+}
+
+.sources-note strong {
+  font-size: 15px;
+}
+
+.sources-note p {
+  font-size: 13px;
+}
+
+footer,
+.qr-link code {
+  font-size: 12px;
+}
+
+.modal > p,
+.signature-flow span,
+.summary-grid ol,
+.summary-grid ul {
+  font-size: 13px;
+}
+
+.summary-numbers span {
+  font-size: 11px;
+}
+
+.qr-modal {
+  width: min(680px, calc(100% - 28px));
+}
+
+.qr-frame {
+  width: min(360px, 84vw);
+  min-height: 360px;
+}
+
+#qrCanvas canvas,
+#qrCanvas img,
+#qrCanvas svg {
+  width: 100%;
+  max-width: 330px;
+  height: auto;
+}
+
+.qr-room {
+  font-size: 15px;
+}
+
+@media (max-width: 900px) {
+  .coach-panel {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .coach-progress {
+    grid-column: 2 / -1;
+    grid-row: 2;
+  }
+
+  .coach-qr-button {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .plain-howto {
+    grid-template-columns: 1fr;
+  }
+
+  .plain-howto strong {
+    grid-column: auto;
+  }
+
+  .coach-panel {
+    grid-template-columns: auto 1fr;
+    gap: 13px;
+    padding: 16px;
+  }
+
+  .coach-copy strong {
+    font-size: 21px;
+  }
+
+  .coach-copy p {
+    font-size: 13px;
+  }
+
+  .coach-progress {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    justify-content: space-between;
+  }
+
+  .coach-progress span {
+    flex: 1;
+  }
+
+  .coach-qr-button {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    width: 100%;
+  }
+
+  .help-bottom {
+    display: grid;
+  }
+
+  .help-bottom .button {
+    width: 100%;
+  }
+
+  .help-steps li {
+    grid-template-columns: 32px 1fr;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .help-steps li::before {
+    width: 30px;
+    height: 30px;
+  }
+
+  .room-tools {
+    gap: 5px;
+  }
+
+  .help-button {
+    padding-inline: 9px;
+    font-size: 11px;
+  }
+
+  .qr-frame {
+    width: min(330px, 88vw);
+    min-height: 330px;
+  }
+}
+
+/* Second readability pass for projection-sized text */
+.plain-howto span {
+  font-size: 14px;
+}
+
+.coach-copy p {
+  font-size: 15px;
+}
+
+.section-intro > div > p {
+  font-size: 17px;
+}
+
+.entry-copy > p,
+.panel-copy {
+  font-size: 15px;
+}
+
+.entry-features span {
+  font-size: 13px;
+}
+
+.form-note {
+  font-size: 14px;
+}
+
+.room-code-wrap > span,
+.room-pulse,
+.room-tools {
+  font-size: 13px;
+}
+
+.room-code-wrap small,
+.icon-button {
+  font-size: 12px;
+}
+
+.profile-head span,
+.balance-label,
+.profile-metrics {
+  font-size: 12px;
+}
+
+.address-box span {
+  font-size: 11px;
+}
+
+.address-box code {
+  font-size: 13px;
+}
+
+.metric-card > span {
+  font-size: 13px;
+}
+
+.metric-card > small {
+  font-size: 12px;
+}
+
+.hash-machine span,
+.hash-arrow {
+  font-size: 11px;
+}
+
+.hash-machine code {
+  font-size: 13px;
+}
+
+.mining-stats {
+  font-size: 12px;
+}
+
+.incident-button span {
+  font-size: 12px;
+}
+
+.incident-button strong {
+  font-size: 15px;
+}
+
+.incident-button small {
+  font-size: 12px;
+}
+
+.incident-result {
+  font-size: 13px;
+}
+
+.chain-legend {
+  font-size: 12px;
+}
+
+.chain-chip span,
+.chain-chip code {
+  font-size: 11px;
+}
+
+.best-block-head,
+.best-block-head code {
+  font-size: 12px;
+}
+
+.best-block-grid span {
+  font-size: 11px;
+}
+
+.count-chip {
+  font-size: 12px;
+}
+
+.pool-item strong {
+  font-size: 14px;
+}
+
+.pool-item small {
+  font-size: 11px;
+}
+
+.pool-item > span:last-child {
+  font-size: 14px;
+}
+
+.empty-state {
+  font-size: 14px;
+}
+
+.text-button {
+  font-size: 13px;
+}
+
+.rank-row > b {
+  font-size: 12px;
+}
+
+.rank-row strong {
+  font-size: 14px;
+}
+
+.rank-row small {
+  font-size: 11px;
+}
+
+.rank-row > em {
+  font-size: 10px;
+}
+
+.rank-row > span,
+table,
+th,
+td {
+  font-size: 13px;
+}
+
+td:nth-child(5) span {
+  font-size: 12px;
+}
+
+.host-tools .button {
+  font-size: 12px;
+}
+
+.timeline p {
+  font-size: 15px;
+}
+
+.lesson-tip span,
+.lesson-tip p {
+  font-size: 14px;
+}
+
+.rule-summary p,
+.comparison-table > div[role="row"] > span {
+  font-size: 14px;
+}
+
+.comparison-table > div[role="row"] > strong {
+  font-size: 15px;
+}
+
+.attack-explainer li span {
+  font-size: 14px;
+}
+
+.attack-explainer li small {
+  font-size: 12px;
+}
+
+.sources-note p {
+  font-size: 14px;
+}
+
+.modal > p,
+.signature-flow span,
+.summary-grid ol,
+.summary-grid ul {
+  font-size: 14px;
+}
+
+body.presenting .coach-copy p,
+body.presenting .panel-copy,
+body.presenting .form-note,
+body.presenting .pool-item strong,
+body.presenting .rank-row strong,
+body.presenting .timeline p {
+  font-size: 16px;
+}
+
+@media (max-width: 640px) {
+  .coach-copy p {
+    font-size: 14px;
+  }
+}
+

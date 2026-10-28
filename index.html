@@ -39,7 +39,7 @@
         <p class="hero-lead">扫码加入同一间“共识教室”，完成转账、签名与挖矿。亲手制造一次分叉、双花和多数算力攻击，再看全网如何选择唯一账本。</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#game">进入联合账本 <span>↘</span></a>
-          <a class="button button-quiet" href="#lesson">先看 12 分钟流程</a>
+          <button class="button button-quiet" type="button" id="quickHelpButton">30 秒看懂怎么玩</button>
         </div>
         <ul class="hero-facts" aria-label="课程特点">
           <li><b>0</b><span>安装步骤</span></li>
@@ -124,6 +124,12 @@
             <span>不连接真实钱包</span>
             <span>房间结束后不保留资产</span>
           </div>
+          <div class="plain-howto" aria-label="游戏流程">
+            <strong>一句话看懂：</strong>
+            <span><b>1</b> 同学扫码加入</span>
+            <span><b>2</b> 发起转账</span>
+            <span><b>3</b> 挖矿确认</span>
+          </div>
         </div>
         <form class="entry-form" id="entryForm" autocomplete="off">
           <label>
@@ -155,10 +161,26 @@
           <div class="room-pulse" id="roomStatus"><i></i><span>正在连接课堂中继</span></div>
           <div class="room-tools">
             <span id="nodeCount">1 个节点</span>
+            <button class="help-button" id="helpButton" type="button">怎样玩</button>
             <button class="icon-button" id="qrButton" type="button" aria-label="显示加入二维码" title="显示加入二维码">QR</button>
             <button class="icon-button" id="presentButton" type="button" aria-label="进入投影模式" title="进入投影模式">⛶</button>
           </div>
         </div>
+
+        <section class="coach-panel" id="coachPanel" aria-live="polite">
+          <div class="coach-step"><span id="coachStepNumber">1</span><small>当前任务</small></div>
+          <div class="coach-copy">
+            <strong id="coachTitle">先让同学扫码加入</strong>
+            <p id="coachText">点击“显示二维码”，同学用手机扫码后会进入这个房间。</p>
+          </div>
+          <div class="coach-progress" aria-label="游戏进度">
+            <span data-step="1"><b>1</b>加入</span>
+            <span data-step="2"><b>2</b>转账</span>
+            <span data-step="3"><b>3</b>挖矿</span>
+            <span data-step="4"><b>4</b>复盘</span>
+          </div>
+          <button class="button button-dark coach-qr-button" type="button" id="coachQrButton">显示二维码</button>
+        </section>
 
         <div class="dashboard-grid">
           <aside class="profile-card">
@@ -485,6 +507,24 @@
       <a href="#top">回到顶部 ↑</a>
     </span>
   </footer>
+
+  <dialog id="helpDialog" class="modal help-modal">
+    <button class="modal-close" type="button" data-close-dialog="helpDialog" aria-label="关闭">×</button>
+    <span class="panel-index">QUICK GUIDE / 30 秒上手</span>
+    <h2>一句话：转账，挖矿，写进账本。</h2>
+    <p class="help-lead">先别管比特币的技术名词。把全班想象成一群人共同维护一本公开账本。</p>
+    <ol class="help-steps">
+      <li><b>每个人先成为节点</b><span>输入昵称并扫码加入房间。每台设备得到自己的签名密钥；这里只发课堂币，不连接真实钱包。</span></li>
+      <li><b>转账只是“提交申请”</b><span>A 把 5 CB 转给 B 后，交易会进入“待确认区”。此时还没有真正写进主链。</span></li>
+      <li><b>挖矿的人在抢记账权</b><span>点击“开始挖矿”，浏览器不断尝试数字，直到哈希开头出现三个 0。先成功的人把待确认交易打包成新区块。</span></li>
+      <li><b>所有人选择同一条主链</b><span>如果两个区块同时出现，系统保留分支再重新选择。最终只有一条主链上的交易算已确认。</span></li>
+      <li><b>最后制造事故</b><span>双花展示同一笔钱能否花两次；51% 展示多数算力能改写近期顺序，但不能偷走别人私钥保护的币。</span></li>
+    </ol>
+    <div class="help-bottom">
+      <div><b>你现在只需要做</b><span>看黄色“当前任务”卡片，它每次只告诉你下一步。</span></div>
+      <button class="button button-primary" type="button" data-close-dialog="helpDialog">明白了，开始</button>
+    </div>
+  </dialog>
 
   <dialog id="qrDialog" class="modal qr-modal">
     <button class="modal-close" type="button" data-close-dialog="qrDialog" aria-label="关闭">×</button>
